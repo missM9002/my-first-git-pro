@@ -1,0 +1,100 @@
+day21
+1. 资产采集的部分补充
+2. api
+内容回顾
+1. cmdb
+	1. 硬件资产信息的采集
+	2. 开发自动化运维的平台
+		监控  
+		自动装机
+		代码发布
+		故障自愈
+		
+	3. 开发系统的时候遇到什么样的问题？
+	
+		json序列化  字典的key如果是数字的话  序列化后变字符串
+		
+	4. 技术点：
+		1. sys.path  
+		2. 开放 封闭原则
+			开放 扩展 配置
+			封闭 源代码 
+			
+		   支持多种：
+		   - agent
+		   - ssh 
+		   - salt
+		   - ansible
+		   
+		   支持扩展
+		   importlib.import_module   导入模块
+	   3. 类的约束    
+			继承 + 抛出异常
+			abc 抽象类 + 抽象方法
+			
+	   4. 可插拔式采集硬件信息
+		
+		
+	   5. 支持win  linux 
+	   
+	   6. debug
+		   读取文件  
+		   
+		   
+	   7. 资产信息汇报给API
+		   requests 
+		    data=json.dumps(info).encode('utf-8'),    #    {}  urlencode  name=alex&age=73
+			
+			
+	   8.api
+		CBV  
+		
+		csrf_exempt   只能加在dispatch
+		
+	   9. djangorestframework 
+		   rest_framework 
+		   
+		   from rest_framework.views import APIView
+		   from rest_framework.response import Response
+			
+			request.data   自动做反序列化 
+		    Response   序列化  好看的页面
+
+今日内容：
+
+唯一标识：
+	物理机： sn号 
+	物理机 + 虚拟机 
+		1. 如果虚拟出来的sn号都唯一  sn号 唯一标识
+		2. sn号 标识物理机  +  接口 
+		3. 主机名 c1.com 
+			一开始主机名都是惟一的  
+			改主机名  也改成唯一的
+				在客户端有一个文件   存放主机名
+				1. 没有文件    新增主机
+				
+				2. 读取文件  拿到老的主机名 老的主机名 和 采集到的主机名做对比
+					2.1 相等   没修改主机名     只更新硬件信息
+					2.2 不相等   修改主机名     更新硬件信息 + 主机名
+				
+		
+api的验证：
+	方式一：
+		key  
+		对key进行校验 相等就通过
+		缺点： key 不动态
+		
+	方式二：
+		key|时间戳    加密
+		
+	
+加密
+	base64 对称加密
+	rsa    非对称加密
+	
+
+		
+		
+	
+
+			
