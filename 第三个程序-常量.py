@@ -1,0 +1,7 @@
+BIRTH_OF_ALEX = "1984-05-06"
+print(BIRTH_OF_ALEX)
+BIRTH_OF_ALEX = "12"
+print(BIRTH_OF_ALEX)
+
+
+print(18)
